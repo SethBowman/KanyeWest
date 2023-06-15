@@ -12,6 +12,13 @@ var kanyeResponse = client.GetStringAsync(kanyeURL).Result;
 
 var kanyeQuote = JObject.Parse(kanyeResponse).GetValue("quote").ToString();
 
-Console.WriteLine(kanyeQuote);
+//Console.WriteLine(kanyeQuote);
 
 
+var apiKeyObj = File.ReadAllText("appsettings.json");
+
+var apiKey = JObject.Parse(apiKeyObj).GetValue("apiKey");
+
+var url = $"http://api.openweathermap.org/data/2.5/weather?zip=35091&appid={apiKey}&units=imperial";
+
+Console.WriteLine(apiKey);
